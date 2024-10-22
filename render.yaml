@@ -1,0 +1,23 @@
+databases:
+  - name: batch_36_task_manager
+    databaseName: batch_36_task_manager
+    user: batch_36_task_manager
+    plan: free
+
+services:
+  - type: web
+    name: batch_36_task_manager
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: "bundle exec rails server && bundle exec rails db:create"
+    envVars:
+      - key: batch_36_task_manager
+        fromDatabase:
+          name: batch_36_task_manager
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2 # sensible default
