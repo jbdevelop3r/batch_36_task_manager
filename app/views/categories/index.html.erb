@@ -1,0 +1,12 @@
+<h3>Categories</h3>
+<br>
+<hr>
+<br>
+<% @categories.each do |categ| %>
+  <ul>
+    <li>
+      <p><%= categ.category_name %></p>
+      <p> <%= link_to "View Category", category_path(categ) %> </p>
+    </li>
+  </ul>
+<% end %>
