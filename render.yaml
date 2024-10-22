@@ -17,7 +17,7 @@ services:
         fromDatabase:
           name: batch_36_task_manager
           property: connectionString
-      - key: RAILS_MASTER_KEY
+      - key: 1e993049f43b2b6fe26c8b2199e12873
         sync: false
       - key: WEB_CONCURRENCY
         value: 2 # sensible default
