@@ -1,7 +1,7 @@
 databases:
   - name: batch_36_task_manager
     databaseName: batch_36_task_manager
-    user: batch_36_task_manager
+    user: justine01
     plan: free
 
 services:
