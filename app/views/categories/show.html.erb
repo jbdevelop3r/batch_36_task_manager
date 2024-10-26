@@ -1,12 +1,23 @@
-<h3>Tasks</h3>
-<br>
-<hr>
-<br>
-<%  @category_tasks.each do |task|  %>
-  <div>
-    <p>Task: <%= task.task_name %> </p>
-    
-    <p> <%= link_to "Show Task", category_task_path(task) %> </p>
-  </div>
-  <br>
-<% end %>
+<p><strong>Category Name:</strong> <%= @category.category_name %></p>
+
+<h3>Tasks under this category:</h3>
+<ul>
+  <% if @category_tasks.any? %>
+    <% @category_tasks.each do |task| %>
+      <li>
+        <strong>Task Name:</strong> <%= task.task_name %><br>
+        <strong>Description:</strong> <%= task.description %><br>
+        <strong>Due Date:</strong> <%= task.due_date %><br>
+        <%= link_to 'Edit Task', edit_category_task_path(@category, task), class: "btn btn-warning" %> |
+        <%= link_to 'Show Task', category_task_path(@category, task), class: "btn btn-info" %>
+      </li>
+      <hr>
+    <% end %>
+  <% else %>
+    <p>No tasks available for this category.</p>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit Category', edit_category_path(@category), class: "btn btn-primary" %> |
+<%= link_to 'New Category', new_category_path, class: "btn btn-secondary" %> |
+<%= link_to 'New Task', new_category_task_path(@category), class: "btn btn-success" %>

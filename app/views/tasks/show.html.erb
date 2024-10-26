@@ -1,3 +1,7 @@
 <%= @task.task_name %>
-<%= @task.description %>
+<%= simple_format(@task.descriptio)n %>
 <%= @task.due_date %>
+
+<h1>dito ung show ng task</h1>
+<br>
+<%= link_to "Categories", categories_path %>
