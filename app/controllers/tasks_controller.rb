@@ -9,14 +9,14 @@ class TasksController < ApplicationController
   def show
   end
 
-  def new 
+  def new
     @task = @category.tasks.build
   end
 
-  def create 
+  def create
     @task = @category.tasks.build(task_params)
 
-    if @task.save  
+    if @task.save
       redirect_to category_task_path(@category, @task), notice: 'Task was successfully created.'
     else
       render :new, status: :unprocessable_entity
